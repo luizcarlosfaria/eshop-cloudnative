@@ -1,4 +1,4 @@
-# eshop-project
+# EShop gaGO.io
 Nosso projeto de eshop 
 
 
