@@ -1,6 +1,6 @@
-# EShop gaGO.io
+# eshop-project
 Nosso projeto de eshop 
 
+## Child Projects
 
-## Projetos
-[/luizcarlosfaria/eshop-project-infra](../../../../luizcarlosfaria/eshop-project-infra)
+### [Infra](../../../../luizcarlosfaria/eshop-project-infra) - Pseudo Infraestrutura de Produção
