@@ -1,3 +1,6 @@
 [submodule "infra"]
 	path = infra
 	url = https://github.com/luizcarlosfaria/eshop-project-infra.git
+[submodule "catalog"]
+	path = catalog
+	url = https://github.com/luizcarlosfaria/eshop-project-catalog.git
