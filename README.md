@@ -5,4 +5,4 @@ Nosso projeto de eshop
 
 ### [Infra](../../../../luizcarlosfaria/eshop-project-infra) - Pseudo Infraestrutura de Produção
 
-### [Infra](../../../../luizcarlosfaria/eshop-project-catalog) - Catalog
+### [Catalog](../../../../luizcarlosfaria/eshop-project-catalog) - Catalog
