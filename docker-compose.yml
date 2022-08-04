@@ -9,6 +9,14 @@ services:
     networks:
       - eshop-front
 
+  eshopcloudnative.catalog.bootstrapper:
+    image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrapper
+    build:
+      context: ./
+      dockerfile: catalog/eShopCloudNative.Catalog.Bootstrapper/Dockerfile
+    networks:
+      - eshop-back
+
   redis-front:
     image: redis:7.0.4
     container_name: redis-front
@@ -87,6 +95,7 @@ services:
     networks:
       - eshop-back
 
+
 networks:
   eshop-front:
     driver: bridge
@@ -96,5 +105,6 @@ networks:
 volumes:
   rabbitmq_data:
   pgadmin_data:
+
 
 

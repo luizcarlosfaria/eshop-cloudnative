@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{4710
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9D285E4F-D05A-4893-A3EB-56E064C98C31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Catalog.Bootstrapper", "catalog\eShopCloudNative.Catalog.Bootstrapper\eShopCloudNative.Catalog.Bootstrapper.csproj", "{BA147E9C-BA48-40A1-9B4B-373FA59332AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{9D285E4F-D05A-4893-A3EB-56E064C98C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D285E4F-D05A-4893-A3EB-56E064C98C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D285E4F-D05A-4893-A3EB-56E064C98C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B362F25-7209-4D12-B36E-7342A652D38B} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
+		{BA147E9C-BA48-40A1-9B4B-373FA59332AF} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}
