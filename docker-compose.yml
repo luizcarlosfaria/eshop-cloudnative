@@ -8,6 +8,10 @@ services:
       dockerfile: eShopCloudNative.Catalog.WebUI/Dockerfile
     networks:
       - eshop-front
+    depends_on:
+      eshopcloudnative.catalog.bootstrapper:
+        condition: service_completed_successfully
+
 
   eshopcloudnative.catalog.bootstrapper:
     image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrapper
@@ -16,6 +20,17 @@ services:
       dockerfile: catalog/eShopCloudNative.Catalog.Bootstrapper/Dockerfile
     networks:
       - eshop-back
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis-front:
+        condition: service_started
+      redis-back:
+        condition: service_started
+      minio:
+        condition: service_started
 
   redis-front:
     image: redis:7.0.4
@@ -95,6 +110,17 @@ services:
     networks:
       - eshop-back
 
+  minio:
+    image: quay.io/minio/minio
+    ports:
+    - 9000:9000
+    - 9001:9001
+    command: ["server", "/data", "--console-address", ":9001"]
+    volumes:
+    - ./infra/minio/:/data
+    networks:
+      - eshop-front
+      - eshop-back
 
 networks:
   eshop-front:
