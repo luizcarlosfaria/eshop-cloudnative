@@ -10,14 +10,13 @@ services:
       - eshop-front
     depends_on:
       eshopcloudnative.catalog.bootstrapper:
-        condition: service_completed_successfully
-
+        condition: service_started #service_completed_successfully (visual studio não suporta)
 
   eshopcloudnative.catalog.bootstrapper:
     image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrapper
     build:
-      context: ./
-      dockerfile: catalog/eShopCloudNative.Catalog.Bootstrapper/Dockerfile
+      context: ./catalog
+      dockerfile: eShopCloudNative.Catalog.Bootstrapper/Dockerfile
     networks:
       - eshop-back
     depends_on:
@@ -113,14 +112,16 @@ services:
   minio:
     image: quay.io/minio/minio
     ports:
-    - 9000:9000
-    - 9001:9001
-    command: ["server", "/data", "--console-address", ":9001"]
+      - 9000:9000
+      - 9001:9001
+    command: [ "server", "/data", "--console-address", ":9001" ]
     volumes:
-    - ./infra/minio/:/data
+      - minio_data:/data
     networks:
       - eshop-front
       - eshop-back
+
+
 
 networks:
   eshop-front:
@@ -131,6 +132,6 @@ networks:
 volumes:
   rabbitmq_data:
   pgadmin_data:
-
+  minio_data:
 
 
