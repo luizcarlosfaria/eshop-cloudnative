@@ -69,7 +69,7 @@ services:
       - eshop-back
 
   pgadmin4:
-    image: dpage/pgadmin4:6.5
+    image: dpage/pgadmin4:6.12
     container_name: pgadmin
     hostname: pgadmin
     environment:
