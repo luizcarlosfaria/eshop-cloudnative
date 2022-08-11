@@ -11,6 +11,8 @@ services:
     depends_on:
       eshopcloudnative.catalog.bootstrapper:
         condition: service_started #service_completed_successfully (visual studio não suporta)
+      eshopcloudnative.catalog.apigateway:
+        condition: service_started #service_completed_successfully (visual studio não suporta)
 
   eshopcloudnative.catalog.bootstrapper:
     image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrapper
@@ -24,26 +26,49 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
-      redis-front:
-        condition: service_started
-      redis-back:
+      redis:
         condition: service_started
       minio:
         condition: service_started
 
-  redis-front:
+  eshopcloudnative.catalog.webapi:
+    image: ${DOCKER_REGISTRY-}eshop-catalog-webapi
+    build:
+      context: ./catalog
+      dockerfile: eShopCloudNative.Catalog.WebApi/Dockerfile
+    networks:
+      - eshop-back
+
+  eshopcloudnative.catalog.apigateway:
+    image: kong:2.8.1-alpine
+    volumes:
+      - ./catalog/eShopCloudNative.Catalog.ApiGateway/kong.yml:/kong.yml
+      - ./catalog/eShopCloudNative.Catalog.ApiGateway/kong.log:/tmp/file.log
+    environment:
+      - LC_CTYPE=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/kong.yml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+    networks:
+      - eshop-front
+      - eshop-back
+    depends_on:
+      eshopcloudnative.catalog.webapi:
+        condition: service_started #service_completed_successfully (visual studio não suporta)
+
+
+  redis:
     image: redis:7.0.4
     container_name: redis-front
     networks:
       - eshop-front
+      - eshop-back
 
   ##
-
-  redis-back:
-    image: redis:7.0.4
-    container_name: redis-back
-    networks:
-      - eshop-back
 
   postgres:
     image: postgres:14.4
@@ -96,7 +121,7 @@ services:
     ports:
       - "15672:15672" #management # habilitado visualização no browser
       #- "15692:15692" #prometheus # desnecessário
-      - "5672:5672" #amqp       # desnecessário
+      #- "5672:5672" #amqp       # desnecessário
     healthcheck:
       test:
         [
@@ -123,6 +148,7 @@ services:
 
 
 
+
 networks:
   eshop-front:
     driver: bridge
@@ -133,5 +159,6 @@ volumes:
   rabbitmq_data:
   pgadmin_data:
   minio_data:
+
 
 

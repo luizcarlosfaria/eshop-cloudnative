@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.WebUI", "catalog\eShopCloudNative.Catalog.WebUI\eShopCloudNative.Catalog.WebUI.csproj", "{4B362F25-7209-4D12-B36E-7342A652D38B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{47103EE0-8D83-4EC3-8292-5B78C829CE21}"
+	ProjectSection(SolutionItems) = preProject
+		catalog\eShopCloudNative.Catalog.ApiGateway\kong.yml = catalog\eShopCloudNative.Catalog.ApiGateway\kong.yml
+	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9D285E4F-D05A-4893-A3EB-56E064C98C31}"
 EndProject
@@ -15,7 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.WebApi", "catalog\eShopCloudNative.Catalog.WebApi\eShopCloudNative.Catalog.WebApi.csproj", "{54DB5DBE-FC5B-4BB2-B394-51340D0BA108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Catalog.Contracts", "catalog\eShopCloudNative.Catalog.Contracts\eShopCloudNative.Catalog.Contracts.csproj", "{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Contracts", "catalog\eShopCloudNative.Catalog.Contracts\eShopCloudNative.Catalog.Contracts.csproj", "{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B791BEAD-D87C-4D55-BF8B-B7F504E260A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ports", "Ports", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +60,12 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B362F25-7209-4D12-B36E-7342A652D38B} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
-		{BA147E9C-BA48-40A1-9B4B-373FA59332AF} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
-		{F02BA866-440F-44B0-B9E1-CDE283E4FE07} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
-		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
-		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
+		{BA147E9C-BA48-40A1-9B4B-373FA59332AF} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
+		{F02BA866-440F-44B0-B9E1-CDE283E4FE07} = {B791BEAD-D87C-4D55-BF8B-B7F504E260A1}
+		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
+		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55} = {B791BEAD-D87C-4D55-BF8B-B7F504E260A1}
+		{B791BEAD-D87C-4D55-BF8B-B7F504E260A1} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
+		{6525EA68-80F3-4D33-8C4F-319893C32BFE} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}
