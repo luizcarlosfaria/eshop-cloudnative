@@ -43,7 +43,6 @@ services:
     image: kong:2.8.1-alpine
     volumes:
       - ./catalog/eShopCloudNative.Catalog.ApiGateway/kong.yml:/kong.yml
-      - ./catalog/eShopCloudNative.Catalog.ApiGateway/kong.log:/tmp/file.log
     environment:
       - LC_CTYPE=en_US.UTF-8
       - LC_ALL=en_US.UTF-8
@@ -59,7 +58,6 @@ services:
     depends_on:
       eshopcloudnative.catalog.webapi:
         condition: service_started #service_completed_successfully (visual studio não suporta)
-
 
   redis:
     image: redis:7.0.4
@@ -146,9 +144,6 @@ services:
       - eshop-front
       - eshop-back
 
-
-
-
 networks:
   eshop-front:
     driver: bridge
@@ -159,6 +154,5 @@ volumes:
   rabbitmq_data:
   pgadmin_data:
   minio_data:
-
 
 
