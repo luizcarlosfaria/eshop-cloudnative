@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.WebUI", "catalog\eShopCloudNative.Catalog.WebUI\eShopCloudNative.Catalog.WebUI.csproj", "{4B362F25-7209-4D12-B36E-7342A652D38B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{47103EE0-8D83-4EC3-8292-5B78C829CE21}"
-	ProjectSection(SolutionItems) = preProject
-		catalog\eShopCloudNative.Catalog.ApiGateway\kong.yml = catalog\eShopCloudNative.Catalog.ApiGateway\kong.yml
-	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9D285E4F-D05A-4893-A3EB-56E064C98C31}"
 EndProject

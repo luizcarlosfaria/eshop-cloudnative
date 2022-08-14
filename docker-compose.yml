@@ -11,7 +11,7 @@ services:
     depends_on:
       eshopcloudnative.catalog.bootstrapper:
         condition: service_started #service_completed_successfully (visual studio não suporta)
-      eshopcloudnative.catalog.apigateway:
+      api:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
   eshopcloudnative.catalog.bootstrapper:
@@ -39,10 +39,10 @@ services:
     networks:
       - eshop-back
 
-  eshopcloudnative.catalog.apigateway:
+  api:
     image: kong:2.8.1-alpine
     volumes:
-      - ./catalog/eShopCloudNative.Catalog.ApiGateway/kong.yml:/kong.yml
+      - ./infra/api/kong.yml:/kong.yml
     environment:
       - LC_CTYPE=en_US.UTF-8
       - LC_ALL=en_US.UTF-8
@@ -52,6 +52,8 @@ services:
       - KONG_ADMIN_ACCESS_LOG=/dev/stdout
       - KONG_PROXY_ERROR_LOG=/dev/stderr
       - KONG_ADMIN_ERROR_LOG=/dev/stderr
+    ports:
+      - 8000:8000
     networks:
       - eshop-front
       - eshop-back
