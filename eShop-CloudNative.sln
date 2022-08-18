@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B791BE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ports", "Ports", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Catalog.Architecture", "catalog\eShopCloudNative.Catalog.Architecture\eShopCloudNative.Catalog.Architecture.csproj", "{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55} = {B791BEAD-D87C-4D55-BF8B-B7F504E260A1}
 		{B791BEAD-D87C-4D55-BF8B-B7F504E260A1} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
 		{6525EA68-80F3-4D33-8C4F-319893C32BFE} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
+		{FE206DE3-DA83-4270-AEC2-8B0D085EAE45} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}
