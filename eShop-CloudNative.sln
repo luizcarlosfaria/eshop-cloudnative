@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B791BE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ports", "Ports", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Catalog.Architecture", "catalog\eShopCloudNative.Catalog.Architecture\eShopCloudNative.Catalog.Architecture.csproj", "{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Architecture", "catalog\eShopCloudNative.Catalog.Architecture\eShopCloudNative.Catalog.Architecture.csproj", "{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,7 +62,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4B362F25-7209-4D12-B36E-7342A652D38B} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
+		{4B362F25-7209-4D12-B36E-7342A652D38B} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 		{BA147E9C-BA48-40A1-9B4B-373FA59332AF} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 		{F02BA866-440F-44B0-B9E1-CDE283E4FE07} = {B791BEAD-D87C-4D55-BF8B-B7F504E260A1}
 		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
