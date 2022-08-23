@@ -1,4 +1,4 @@
-# eshop-project
+# eshop-cloudnative
 Nosso projeto de eshop 
 
 ## Child Projects
