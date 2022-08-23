@@ -1,6 +1,6 @@
 [submodule "infra"]
-	path = infra
-	url = https://github.com/luizcarlosfaria/eshop-project-infra.git
+path = infra
+url = https://github.com/luizcarlosfaria/eshop-cloudnative-infra.git
 [submodule "catalog"]
-	path = catalog
-	url = https://github.com/luizcarlosfaria/eshop-project-catalog.git
+path = catalog
+url = https://github.com/luizcarlosfaria/eshop-cloudnative-catalog.git
