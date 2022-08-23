@@ -4,3 +4,6 @@ url = https://github.com/luizcarlosfaria/eshop-cloudnative-infra.git
 [submodule "catalog"]
 path = catalog
 url = https://github.com/luizcarlosfaria/eshop-cloudnative-catalog.git
+[submodule "profile"]
+	path = profile
+	url = https://github.com/luizcarlosfaria/eshop-cloudnative-profile.git
