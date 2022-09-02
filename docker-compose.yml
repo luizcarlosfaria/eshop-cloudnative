@@ -2,12 +2,14 @@ version: '3.4'
 
 services:
   eshopcloudnative.catalog.webui:
+    container_name: catalog_webui
     image: ${DOCKER_REGISTRY-}eshop-catalog-web
     build:
       context: ./catalog
       dockerfile: eShopCloudNative.Catalog.WebUI/Dockerfile
     networks:
       - eshop-front
+    mem_limit: 150m
     depends_on:
       eshopcloudnative.catalog.bootstrapper:
         condition: service_started #service_completed_successfully (visual studio não suporta)
@@ -15,6 +17,7 @@ services:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
   eshopcloudnative.catalog.bootstrapper:
+    container_name: catalog_bootstrapper
     image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrapper
     build:
       context: ./catalog
@@ -32,14 +35,17 @@ services:
         condition: service_started
 
   eshopcloudnative.catalog.webapi:
+    container_name: catalog_webapi
     image: ${DOCKER_REGISTRY-}eshop-catalog-webapi
     build:
       context: ./catalog
       dockerfile: eShopCloudNative.Catalog.WebApi/Dockerfile
     networks:
       - eshop-back
+    mem_limit: 170m
 
   api:
+    container_name: kong
     image: kong:2.8.1-alpine
     volumes:
       - ./infra/api/kong.yml:/kong.yml
@@ -54,6 +60,7 @@ services:
       - KONG_ADMIN_ERROR_LOG=/dev/stderr
     ports:
       - 8000:8000
+    #mem_limit: 300m
     networks:
       - eshop-front
       - eshop-back
@@ -137,6 +144,7 @@ services:
       - eshop-back
 
   minio:
+    container_name: minio
     image: quay.io/minio/minio
     ports:
       - 9000:9000
