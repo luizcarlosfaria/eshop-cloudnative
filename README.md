@@ -16,34 +16,61 @@ Esse projeto usa git modules, portanto não ignore o parâmetro `--recurse-submo
 ```
 git clone --recurse-submodules https://github.com/luizcarlosfaria/eshop-cloudnative.git
 ```
+## 100% Cloud Agnostic
 
+Nenhuma dependência de NENHUM CLOUD PROVIDER! 
 
+Todas os serviços, aplicações e dependências podem ser instaladas em qualquer Cloud Provider, nosso setup tem única e exclusiva dependência: o Kubernetes.
+As instalações podem ser realizadas em qualquer cloud provider, como **Azure**, **AWS**, **GCP** em soluções como **AKS**, **EKS** ou **GKE** ou ainda em serviços como **Hetzner**, **Scaleway** e **Digital Ocean** ou mesmo em **máquinas virtuais** ou **bare metal** na nuvem ou On-Premise.
+
+Um dos objetivos desse projeto é demonstrar como podemos não depender dos Cloud Providers para criar soluções incríveis.
 
 ## Sub Modules
 
-### [Infra](../../../eshop-cloudnative-infra) | Pseudo Infraestrutura de Produção
+### [Infra](../../../eshop-cloudnative-infra) | Infraestrutura de Produção
 
 ### [Catalog](../../../eshop-cloudnative-catalog) | Produtos, Categorias, Menu, Imagens
 
-### [Profile](../../../eshop-cloudnative-profile) | Endereço, Compras, e Dados Pessoais
+### [Profile](../../../eshop-cloudnative-profile) | Endereço e Dados Pessoais
 
 ## Foco da Solução
 
-### Backend
+* Backend
 
-### Arquitetura
+* Arquitetura
 
-### Containers
+* Containers
 
-### Microsserviços
+* Microsserviços
 
-### Mensageria
+* Mensageria
 
-### Event Driven Architecture
+* Event Driven Architecture
+ 
+* Agnostic Service
 
-### Agnostic Service
+* Hexagonal Architecture
 
-### Hexagonal Architecture
+Entendendo o stack
+
+```mermaid
+sequenceDiagram
+    participant VarnishCache
+    participant WebApp
+    participant Kong
+    participant WebAPI
+    participant Minio
+    participant Postgres
+    
+    VarnishCache->>WebApp: 
+    WebApp->>Kong: 
+    Kong->>WebAPI: 
+    WebAPI->>Postgres:
+    Postgres-->>WebAPI:
+    WebAPI-->>Kong: 
+    Kong-->>WebApp:     
+    WebApp-->>VarnishCache:
+```
 
 # Projeto final Cloud Native .NET
 
