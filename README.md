@@ -102,6 +102,16 @@ sequenceDiagram
     deactivate VarnishCache
 ```
 
+O Varnish tem o papel de simular Akamai e qualquer outro cache service. 
+
+A web app é nossa aplicação web. Nesse momento ela ainda é uma aplicação ASP.NET Core MVC, com front-end desenvolvido com Tailwind CSS e VueJS.
+
+Entre a aplicação web e a WebAPI temos o Kong como nosso API Gateway. 
+
+Todas as API's só aceitam requisições oriundas do Kong. Assim garantimos autenticação (e não autorização), visando conseguir determinar com clareza, quais serviços estão consumindo quais API's. No banco de dados temos o Postgres, implantado no Kubernetes em um cluster totalizando 1 master e 2 replicas. 
+
+O minio é nosso Object Storage, ele, assim como o cluster RabbitMQ e o cluster Postgres estão usando Longhorn para block storage com volumes replicados em todo o cluster.
+
 # Projeto final Cloud Native .NET
 
 Esse projeto tem a missão de ser o projeto final do Cloud Native .NET. 
