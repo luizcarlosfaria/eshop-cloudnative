@@ -51,25 +51,35 @@ Um dos objetivos desse projeto é demonstrar como podemos não depender dos Clou
 
 * Hexagonal Architecture
 
-Entendendo o stack
+Entendendo a stack
 
 ```mermaid
 sequenceDiagram
+    actor Usuario
     participant VarnishCache
     participant WebApp
     participant Kong
     participant WebAPI
-    participant Minio
     participant Postgres
+    participant Minio
     
-    VarnishCache->>WebApp: 
-    WebApp->>Kong: 
-    Kong->>WebAPI: 
-    WebAPI->>Postgres:
-    Postgres-->>WebAPI:
-    WebAPI-->>Kong: 
-    Kong-->>WebApp:     
-    WebApp-->>VarnishCache:
+    Usuario->>VarnishCache: Exibir home
+    VarnishCache->>WebApp: GET /
+    WebApp->>Kong:  GET /catalog/Category/HomeCatalog
+    Kong->>WebAPI: GET /Category/HomeCatalog
+    WebAPI->>Postgres: Select * from...
+    Postgres-->>WebAPI: {dados}
+    WebAPI-->>Kong: Response...
+    Kong-->>WebApp: Response...
+    WebApp-->>VarnishCache: Response...    
+    VarnishCache-->>Usuario: Response... 
+
+    Usuario->>VarnishCache: Exibir imagem
+    VarnishCache->>WebApp: GET /image
+    WebApp->>Minio:  GET /bucket/image
+    Minio-->>WebApp: {stream}
+    WebApp-->>VarnishCache: Response...    
+    VarnishCache-->>Usuario: Response...     
 ```
 
 # Projeto final Cloud Native .NET
