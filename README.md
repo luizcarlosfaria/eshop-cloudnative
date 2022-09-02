@@ -55,6 +55,7 @@ Entendendo a stack
 
 ```mermaid
 sequenceDiagram
+    autonumber
     actor Usuario
     participant VarnishCache
     participant WebApp
@@ -64,22 +65,41 @@ sequenceDiagram
     participant Minio
     
     Usuario->>VarnishCache: Exibir home
+    activate VarnishCache
     VarnishCache->>WebApp: GET /
+    activate WebApp
     WebApp->>Kong:  GET /catalog/Category/HomeCatalog
+    activate Kong
     Kong->>WebAPI: GET /Category/HomeCatalog
+    activate WebAPI
     WebAPI->>Postgres: Select * from...
+    activate Postgres
+    Note over VarnishCache,Postgres: Obtenção de dados
     Postgres-->>WebAPI: {dados}
+    deactivate Postgres
     WebAPI-->>Kong: Response...
+    deactivate WebAPI
     Kong-->>WebApp: Response...
+    deactivate Kong
     WebApp-->>VarnishCache: Response...    
+    deactivate WebApp
     VarnishCache-->>Usuario: Response... 
+    deactivate VarnishCache
+    
 
     Usuario->>VarnishCache: Exibir imagem
+    activate VarnishCache
     VarnishCache->>WebApp: GET /image
+    activate WebApp
     WebApp->>Minio:  GET /bucket/image
+    activate Minio
+    Note over VarnishCache,Minio: Obtenção de Imagens
     Minio-->>WebApp: {stream}
-    WebApp-->>VarnishCache: Response...    
-    VarnishCache-->>Usuario: Response...     
+    deactivate Minio
+    WebApp-->>VarnishCache: Response...   
+    deactivate WebApp 
+    VarnishCache-->>Usuario: Response...  
+    deactivate VarnishCache
 ```
 
 # Projeto final Cloud Native .NET
