@@ -118,4 +118,4 @@ Esse projeto tem a missão de ser o projeto final do Cloud Native .NET.
 
 Ele aglutina diversas jornadas de entendimento do desenho de uma arquitetura. Com ele podemos falar de agnóstic services, podemos falar de mensageria, de event driven architecture, de injeção de dependência, de exception management, de alm, gerência de configuração, RabbitMQ, Redis, Logging, Métricas, API Gateway e muito mais.
 
-Caso queira participar e ver aulas sobre esse projeto, visite [cloudnative.net.br](https://cloudnative.net.br/?utm_source=github&utb_medium=markdown&utm_campaign=eshop-cloudnative) e descubra como se tornar aluno.
+Caso queira participar e ver aulas sobre esse projeto, visite [cloudnative.net.br](https://cloudnative.net.br/?utm_source=github&utm_medium=markdown&utm_campaign=eshop-cloudnative) e descubra como se tornar aluno.
