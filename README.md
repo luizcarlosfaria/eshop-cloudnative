@@ -51,7 +51,7 @@ Um dos objetivos desse projeto é demonstrar como podemos não depender dos Clou
 
 * Hexagonal Architecture
 
-Entendendo a stack
+# Entendendo a stack
 
 ```mermaid
 sequenceDiagram
@@ -111,6 +111,12 @@ Entre a aplicação web e a WebAPI temos o Kong como nosso API Gateway.
 Todas as API's só aceitam requisições oriundas do Kong. Assim garantimos autenticação (e não autorização), visando conseguir determinar com clareza, quais serviços estão consumindo quais API's. No banco de dados temos o Postgres, implantado no Kubernetes em um cluster totalizando 1 master e 2 replicas. 
 
 O minio é nosso Object Storage, ele, assim como o cluster RabbitMQ e o cluster Postgres estão usando Longhorn para block storage com volumes replicados em todo o cluster.
+
+# Entendendo os serviços
+
+<a href="https://gago.io/arquitetura/">
+   <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/diagrama.png" alt="eShop logo" title="eShopOnContainers"  />
+</a>
 
 # Projeto final Cloud Native .NET
 
