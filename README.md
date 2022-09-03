@@ -89,15 +89,15 @@ sequenceDiagram
 
     Usuario->>VarnishCache: Exibir imagem
     activate VarnishCache
-    VarnishCache->>WebApp: GET /image
-    activate WebApp
-    WebApp->>Minio:  GET /bucket/image
+    VarnishCache->>WebAPI: GET /minio/catalog-images/67001dd3-b0e1-4ed2-80f7-8cdf9454f556
+    activate WebAPI
+    WebApp->>Minio:  GET /catalog-images/67001dd3-b0e1-4ed2-80f7-8cdf9454f556
     activate Minio
     Note over VarnishCache,Minio: Obtenção de Imagens
-    Minio-->>WebApp: {stream}
+    Minio-->>WebAPI: {stream}
     deactivate Minio
-    WebApp-->>VarnishCache: Response...   
-    deactivate WebApp 
+    WebAPI-->>VarnishCache: Response...   
+    deactivate WebAPI 
     VarnishCache-->>Usuario: Response...  
     deactivate VarnishCache
 ```
