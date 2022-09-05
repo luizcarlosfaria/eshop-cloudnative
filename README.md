@@ -125,3 +125,13 @@ Esse projeto tem a missão de ser o projeto final do Cloud Native .NET.
 Ele aglutina diversas jornadas de entendimento do desenho de uma arquitetura. Com ele podemos falar de agnóstic services, podemos falar de mensageria, de event driven architecture, de injeção de dependência, de exception management, de alm, gerência de configuração, RabbitMQ, Redis, Logging, Métricas, API Gateway e muito mais.
 
 Caso queira participar e ver aulas sobre esse projeto, visite [cloudnative.net.br](https://cloudnative.net.br/?utm_source=github&utm_medium=markdown&utm_campaign=eshop-cloudnative) e descubra como se tornar aluno.
+
+# Quer entender as decisões técnicas desse projeto?
+
+Esse projeto conta com um **Decision Log** contendo todas as grandes decisões de arquitetura do projeto. 
+
+<a href="https://github.com/users/luizcarlosfaria/projects/2/views/2">
+   <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/EShop-Cloud-Native-Decision-Log.png" alt="eShop logo" title="eShopOnContainers" align="center" height="200" />
+</a>
+
+Parte importante é demonstrar como conseguimos endereçar cada assunto do nosso board no código.
