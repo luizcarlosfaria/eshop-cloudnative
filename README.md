@@ -1,4 +1,4 @@
-<a href="https://gago.io/arquitetura/">
+<a href="https://cloudnative.net.br/?utm_source=github&utm_medium=image&utm_campaign=eshop-cloudnative">
    <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/eshop.webp" alt="eShop logo" title="eShopOnContainers" align="right" height="200" />
 </a>
 
