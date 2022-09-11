@@ -1,0 +1,14 @@
+{
+  "solution": {
+    "path": "eShop-CloudNative.sln",
+    "projects": [
+      "catalog\\eShopCloudNative.Catalog.Architecture\\eShopCloudNative.Catalog.Architecture.csproj",
+      "catalog\\eShopCloudNative.Catalog.Bootstrapper\\eShopCloudNative.Catalog.Bootstrapper.csproj",
+      "catalog\\eShopCloudNative.Catalog.Contracts\\eShopCloudNative.Catalog.Contracts.csproj",
+      "catalog\\eShopCloudNative.Catalog.Core\\eShopCloudNative.Catalog.Core.csproj",
+      "catalog\\eShopCloudNative.Catalog.WebApi\\eShopCloudNative.Catalog.WebApi.csproj",
+      "catalog\\eShopCloudNative.Catalog.WebUI\\eShopCloudNative.Catalog.WebUI.csproj",
+      "docker-compose.dcproj"
+    ]
+  }
+}

@@ -26,17 +26,22 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "architecture", "architecture", "{43B55757-A313-4F77-AD29-B9086CAC8330}"
 	ProjectSection(SolutionItems) = preProject
 		architecture\eShopCloudNative.Architecture.targets = architecture\eShopCloudNative.Architecture.targets
+		architecture\Jenkinsfile = architecture\Jenkinsfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "profile", "profile", "{6D4AC158-6BFB-4E59-8D71-47B3C03B15BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture.Bootstrap", "architecture\eShopCloudNative.Architecture.Bootstrap\eShopCloudNative.Architecture.Bootstrap.csproj", "{F76CFA87-AC06-49C8-9755-AFF575B9FA46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.Bootstrap", "architecture\eShopCloudNative.Architecture.Bootstrap\eShopCloudNative.Architecture.Bootstrap.csproj", "{F76CFA87-AC06-49C8-9755-AFF575B9FA46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture.Data", "architecture\eShopCloudNative.Architecture.Data\eShopCloudNative.Architecture.Data.csproj", "{8DFDD165-F27C-4216-A27E-64BDA6A76B28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.Data", "architecture\eShopCloudNative.Architecture.Data\eShopCloudNative.Architecture.Data.csproj", "{8DFDD165-F27C-4216-A27E-64BDA6A76B28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture.Messaging", "architecture\eShopCloudNative.Architecture.Messaging\eShopCloudNative.Architecture.Messaging.csproj", "{E2143880-2F7A-43C7-AFB7-A997CD1FB8C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.Messaging", "architecture\eShopCloudNative.Architecture.Messaging\eShopCloudNative.Architecture.Messaging.csproj", "{E2143880-2F7A-43C7-AFB7-A997CD1FB8C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture.WebApi", "architecture\eShopCloudNative.Architecture.WebApi\eShopCloudNative.Architecture.WebApi.csproj", "{49233A2C-E3FD-4803-9C18-8ABD495A9AF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.WebApi", "architecture\eShopCloudNative.Architecture.WebApi\eShopCloudNative.Architecture.WebApi.csproj", "{49233A2C-E3FD-4803-9C18-8ABD495A9AF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.Tests", "architecture\eShopCloudNative.Architecture.Tests\eShopCloudNative.Architecture.Tests.csproj", "{099F99C9-A28B-4977-9ECC-7B711D5C0E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture", "architecture\eShopCloudNative.Architecture\eShopCloudNative.Architecture.csproj", "{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +93,14 @@ Global
 		{49233A2C-E3FD-4803-9C18-8ABD495A9AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49233A2C-E3FD-4803-9C18-8ABD495A9AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49233A2C-E3FD-4803-9C18-8ABD495A9AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +118,8 @@ Global
 		{8DFDD165-F27C-4216-A27E-64BDA6A76B28} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{E2143880-2F7A-43C7-AFB7-A997CD1FB8C3} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{49233A2C-E3FD-4803-9C18-8ABD495A9AF5} = {43B55757-A313-4F77-AD29-B9086CAC8330}
+		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C} = {43B55757-A313-4F77-AD29-B9086CAC8330}
+		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}

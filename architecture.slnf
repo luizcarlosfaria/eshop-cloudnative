@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "eShop-CloudNative.sln",
+    "projects": [
+      "architecture\\eShopCloudNative.Architecture.Bootstrap\\eShopCloudNative.Architecture.Bootstrap.csproj",
+      "architecture\\eShopCloudNative.Architecture.Data\\eShopCloudNative.Architecture.Data.csproj",
+      "architecture\\eShopCloudNative.Architecture.Messaging\\eShopCloudNative.Architecture.Messaging.csproj",
+      "architecture\\eShopCloudNative.Architecture.WebApi\\eShopCloudNative.Architecture.WebApi.csproj",
+      "docker-compose.dcproj"
+    ]
+  }
+}
