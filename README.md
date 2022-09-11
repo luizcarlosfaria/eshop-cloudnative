@@ -33,6 +33,8 @@ Um dos objetivos desse projeto é demonstrar como podemos não depender dos Clou
 
 ### [Profile](../../../eshop-cloudnative-profile) | Endereço e Dados Pessoais
 
+### [Architecture](../../../eshop-cloudnative-architecture) | Infraestrutura base que molda a aplicação.
+
 ## Foco da Solução
 
 * Backend
