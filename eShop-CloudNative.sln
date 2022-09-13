@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architectu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.Tests", "architecture\eShopCloudNative.Architecture.Tests\eShopCloudNative.Architecture.Tests.csproj", "{099F99C9-A28B-4977-9ECC-7B711D5C0E8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture", "architecture\eShopCloudNative.Architecture\eShopCloudNative.Architecture.csproj", "{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture", "architecture\eShopCloudNative.Architecture\eShopCloudNative.Architecture.csproj", "{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA6C0391-969F-441A-BA30-236A6000066E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,8 +120,9 @@ Global
 		{8DFDD165-F27C-4216-A27E-64BDA6A76B28} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{E2143880-2F7A-43C7-AFB7-A997CD1FB8C3} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{49233A2C-E3FD-4803-9C18-8ABD495A9AF5} = {43B55757-A313-4F77-AD29-B9086CAC8330}
-		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C} = {43B55757-A313-4F77-AD29-B9086CAC8330}
+		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C} = {CA6C0391-969F-441A-BA30-236A6000066E}
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B} = {43B55757-A313-4F77-AD29-B9086CAC8330}
+		{CA6C0391-969F-441A-BA30-236A6000066E} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}
