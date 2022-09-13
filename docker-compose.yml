@@ -24,6 +24,15 @@ services:
       dockerfile: eShopCloudNative.Catalog.Bootstrapper/Dockerfile
     networks:
       - eshop-back
+    #healthcheck:
+    #  test:
+    #    [
+    #      "CMD-SHELL",
+    #      "cat /tmp/bootstrap-completed || exit 1"
+    #    ]
+    #  interval: 10s
+    #  timeout: 1s
+    #  retries: 200
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,6 +52,10 @@ services:
     networks:
       - eshop-back
     mem_limit: 170m
+    depends_on:
+      eshopcloudnative.catalog.bootstrapper:
+        condition: service_started #service_completed_successfully (visual studio não suporta)
+
 
   api:
     container_name: kong
