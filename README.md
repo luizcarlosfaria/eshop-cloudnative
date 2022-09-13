@@ -140,7 +140,10 @@ Parte importante é demonstrar como conseguimos endereçar cada assunto do nosso
 
 # Ação e reação 
 
-Os eventos que produzem mudanças na arquitetura, no design, na infraestrutura. Um guia sobre a história do projeto
+Os eventos que produzem mudanças na arquitetura, no design, na infraestrutura. 
+
+Um guia sobre a história do projeto.
+
 <a href="https://raw.githubusercontent.com/luizcarlosfaria/eshop-cloudnative/main/docs/assets/EShop-Cloud-Native-AcaoReacao.png">
    <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/EShop-Cloud-Native-AcaoReacao.png" alt="eShop logo" title="eShopOnContainers" align="center" />
 </a>
