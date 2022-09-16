@@ -9,17 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{4710
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9D285E4F-D05A-4893-A3EB-56E064C98C31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Bootstrapper", "catalog\eShopCloudNative.Catalog.Bootstrapper\eShopCloudNative.Catalog.Bootstrapper.csproj", "{BA147E9C-BA48-40A1-9B4B-373FA59332AF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Core", "catalog\eShopCloudNative.Catalog.Core\eShopCloudNative.Catalog.Core.csproj", "{F02BA866-440F-44B0-B9E1-CDE283E4FE07}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.WebApi", "catalog\eShopCloudNative.Catalog.WebApi\eShopCloudNative.Catalog.WebApi.csproj", "{54DB5DBE-FC5B-4BB2-B394-51340D0BA108}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Contracts", "catalog\eShopCloudNative.Catalog.Contracts\eShopCloudNative.Catalog.Contracts.csproj", "{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B791BEAD-D87C-4D55-BF8B-B7F504E260A1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ports", "Ports", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Architecture", "catalog\eShopCloudNative.Catalog.Architecture\eShopCloudNative.Catalog.Architecture.csproj", "{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}"
 EndProject
@@ -45,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architectu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA6C0391-969F-441A-BA30-236A6000066E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.SecondaryAdapters", "catalog\eShopCloudNative.Catalog.SecondaryAdapters\eShopCloudNative.Catalog.SecondaryAdapters.csproj", "{38FC82CC-EFD3-4457-AC30-E8E426906DA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.PrimaryAdapters", "catalog\eShopCloudNative.Catalog.PrimaryAdapters\eShopCloudNative.Catalog.PrimaryAdapters.csproj", "{50245E08-582A-4FB5-BBC8-712C05C842B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,18 +59,10 @@ Global
 		{9D285E4F-D05A-4893-A3EB-56E064C98C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D285E4F-D05A-4893-A3EB-56E064C98C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D285E4F-D05A-4893-A3EB-56E064C98C31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA147E9C-BA48-40A1-9B4B-373FA59332AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F02BA866-440F-44B0-B9E1-CDE283E4FE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F02BA866-440F-44B0-B9E1-CDE283E4FE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F02BA866-440F-44B0-B9E1-CDE283E4FE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F02BA866-440F-44B0-B9E1-CDE283E4FE07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -103,15 +95,21 @@ Global
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B362F25-7209-4D12-B36E-7342A652D38B} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
-		{BA147E9C-BA48-40A1-9B4B-373FA59332AF} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 		{F02BA866-440F-44B0-B9E1-CDE283E4FE07} = {B791BEAD-D87C-4D55-BF8B-B7F504E260A1}
-		{54DB5DBE-FC5B-4BB2-B394-51340D0BA108} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 		{DE64B1D6-7D49-4886-B65D-B7FCD064DE55} = {B791BEAD-D87C-4D55-BF8B-B7F504E260A1}
 		{B791BEAD-D87C-4D55-BF8B-B7F504E260A1} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
 		{6525EA68-80F3-4D33-8C4F-319893C32BFE} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
@@ -123,6 +121,8 @@ Global
 		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C} = {CA6C0391-969F-441A-BA30-236A6000066E}
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{CA6C0391-969F-441A-BA30-236A6000066E} = {43B55757-A313-4F77-AD29-B9086CAC8330}
+		{38FC82CC-EFD3-4457-AC30-E8E426906DA7} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
+		{50245E08-582A-4FB5-BBC8-712C05C842B6} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}

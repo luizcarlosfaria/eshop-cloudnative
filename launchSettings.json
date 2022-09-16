@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "api": "StartWithoutDebugging",
+        "eshopcloudnative.catalog.primaryadapters": "StartDebugging",
+        "eshopcloudnative.catalog.webui": "DoNotStart",
+        "minio": "StartWithoutDebugging",
+        "pgadmin4": "StartWithoutDebugging",
+        "postgres": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "redis": "StartWithoutDebugging"
+      }
+    }
+  }
+}

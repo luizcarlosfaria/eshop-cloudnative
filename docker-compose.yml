@@ -11,28 +11,19 @@ services:
       - eshop-front
     mem_limit: 150m
     depends_on:
-      eshopcloudnative.catalog.bootstrapper:
-        condition: service_started #service_completed_successfully (visual studio não suporta)
       api:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
-  eshopcloudnative.catalog.bootstrapper:
-    container_name: catalog_bootstrapper
-    image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrapper
+
+  eshopcloudnative.catalog.primaryadapters:
+    container_name: catalog_primaryadapters
+    image: ${DOCKER_REGISTRY-}eshop-catalog-primaryadapters
     build:
       context: ./catalog
-      dockerfile: eShopCloudNative.Catalog.Bootstrapper/Dockerfile
+      dockerfile: eShopCloudNative.Catalog.PrimaryAdapters/Dockerfile
     networks:
       - eshop-back
-    #healthcheck:
-    #  test:
-    #    [
-    #      "CMD-SHELL",
-    #      "cat /tmp/bootstrap-completed || exit 1"
-    #    ]
-    #  interval: 10s
-    #  timeout: 1s
-    #  retries: 200
+    mem_limit: 170m
     depends_on:
       postgres:
         condition: service_healthy
@@ -42,20 +33,6 @@ services:
         condition: service_started
       minio:
         condition: service_started
-
-  eshopcloudnative.catalog.webapi:
-    container_name: catalog_webapi
-    image: ${DOCKER_REGISTRY-}eshop-catalog-webapi
-    build:
-      context: ./catalog
-      dockerfile: eShopCloudNative.Catalog.WebApi/Dockerfile
-    networks:
-      - eshop-back
-    mem_limit: 170m
-    depends_on:
-      eshopcloudnative.catalog.bootstrapper:
-        condition: service_started #service_completed_successfully (visual studio não suporta)
-
 
   api:
     container_name: kong
@@ -78,7 +55,7 @@ services:
       - eshop-front
       - eshop-back
     depends_on:
-      eshopcloudnative.catalog.webapi:
+      eshopcloudnative.catalog.primaryadapters:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
   redis:
@@ -161,9 +138,7 @@ services:
       - 9000:9000
       - 9001:9001
     command: [ "server", "/data", "--console-address", ":9001" ]
-    environment: {
-        "MINIO_DOMAIN": "localhost"
-    }
+    environment: { "MINIO_DOMAIN": "localhost" }
     volumes:
       - minio_data:/data
     networks:
