@@ -6,7 +6,7 @@
       "serviceActions": {
         "api": "StartWithoutDebugging",
         "eshopcloudnative.catalog.primaryadapters": "StartDebugging",
-        "eshopcloudnative.catalog.webui": "DoNotStart",
+        "eshopcloudnative.catalog.webui": "StartDebugging",
         "minio": "StartWithoutDebugging",
         "pgadmin4": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
