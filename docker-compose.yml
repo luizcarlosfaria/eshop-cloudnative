@@ -109,7 +109,7 @@ services:
         condition: service_healthy
 
   rabbitmq:
-    container_name: RabbitMQ
+    container_name: rabbitmq
     hostname: rabbitmq
     build:
       context: ./infra/rabbitmq
@@ -129,6 +129,7 @@ services:
       timeout: 20s
       retries: 5
     networks:
+      - eshop-front
       - eshop-back
 
   minio:
