@@ -144,7 +144,8 @@ Os eventos que produzem mudanças na arquitetura, no design, na infraestrutura.
 
 Um guia sobre a história do projeto.
 
-<a href="https://raw.githubusercontent.com/luizcarlosfaria/eshop-cloudnative/main/docs/assets/EShop-Cloud-Native-AcaoReacao.png">
+<a href="https://github.com/luizcarlosfaria/eshop-cloudnative/blob/main/HISTORY.md">
    <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/EShop-Cloud-Native-AcaoReacao01.png" alt="eShop logo" title="eShopOnContainers" align="center" />
 </a>
 
+*Clique na imagem acima para ver toda a história do projeto*
