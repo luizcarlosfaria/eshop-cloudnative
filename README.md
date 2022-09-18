@@ -7,14 +7,18 @@
 
 Loja Virtual feita com .NET seguindo Cloud Native (Containers, Microservice, DevOps, Continuous Delivery), Cloud Agnostic, Hexagonal Architecture, Event Driven Architecture. Desenvolvido com .NET 6, usando Visual Studio e Docker, pronto para ser executado no kubernetes em produção.
 
-## Baixando o projeto
+## Baixando e Executando o projeto
 
 Esse projeto foi pensado em endereçar problemas reais de um cenário crítico de microsserviços. Assim uma das necessidades em um projeto dessa natureza é poder controlar versões de cada microsserviço de forma independente. Permitindo que os times trabalhem de forma independente. Dada a forma como o git trabalha, gitmodules é uma das estratégias para conseguir o mínimo de sanidade nessa tarefa.
 
-Esse projeto usa git modules, portanto não ignore o parâmetro `--recurse-submodules` na hora do clone.
+🎯 **Esse projeto usa git modules, portanto não ignore o parâmetro `--recurse` na hora do clone.**
 
 ```
-git clone --recurse-submodules https://github.com/luizcarlosfaria/eshop-cloudnative.git
+git clone --recurse https://github.com/luizcarlosfaria/eshop-cloudnative.git
+cd ./eshop-cloudnative
+docker-compose up --build
+
+Acesse http://localhost:90/ no seu navegador
 ```
 ## 100% Cloud Agnostic
 
