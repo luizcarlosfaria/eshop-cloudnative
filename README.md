@@ -16,7 +16,7 @@ Esse projeto foi pensado em endereçar problemas reais de um cenário crítico d
 ```
 git clone https://github.com/luizcarlosfaria/eshop-cloudnative.git --recursive
 cd ./eshop-cloudnative
-docker-compose up --build
+docker compose up --build
 
 Acesse http://localhost:90/ no seu navegador
 ```
