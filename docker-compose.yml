@@ -14,7 +14,6 @@ services:
       api:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
-
   eshopcloudnative.catalog.primaryadapters:
     container_name: catalog_primaryadapters
     image: ${DOCKER_REGISTRY-}eshop-catalog-primaryadapters
@@ -138,8 +137,16 @@ services:
     ports:
       - 9000:9000
       - 9001:9001
-    command: [ "server", "/data", "--console-address", ":9001" ]
-    environment: { "MINIO_DOMAIN": "localhost" }
+    command:
+      [
+        "server",
+        "/data",
+        "--console-address",
+        ":9001",
+        "--address",
+        ":9000"
+      ]
+    environment: { "MINIO_DOMAIN": "minio,localhost" }
     volumes:
       - minio_data:/data
     networks:
