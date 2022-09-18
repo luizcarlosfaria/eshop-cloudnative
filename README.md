@@ -116,9 +116,8 @@ O minio é nosso Object Storage, ele, assim como o cluster RabbitMQ e o cluster 
 
 # Entendendo os serviços
 
-<a href="https://gago.io/arquitetura/">
-   <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/diagrama.png" alt="eShop logo" title="eShopOnContainers"  />
-</a>
+<img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/diagrama.png" alt="eShop logo" title="eShopOnContainers"  />
+
 
 # Projeto final Cloud Native .NET
 
@@ -135,6 +134,8 @@ Esse projeto conta com um **Decision Log** contendo todas as grandes decisões d
 <a href="https://github.com/users/luizcarlosfaria/projects/2/views/2">
    <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/EShop-Cloud-Native-Decision-Log.png" alt="eShop logo" title="eShopOnContainers" align="center" />
 </a>
+👉 *Clique na imagem acima para ver ler sobre as decisões técncias do projeto*
+
 
 Parte importante é demonstrar como conseguimos endereçar cada assunto do nosso board no código.
 
@@ -148,4 +149,4 @@ Um guia sobre a história do projeto.
    <img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/EShop-Cloud-Native-AcaoReacao01.png" alt="eShop logo" title="eShopOnContainers" align="center" />
 </a>
 
-*Clique na imagem acima para ver toda a história do projeto*
+👉 *Clique na imagem acima para ver toda a história do projeto*
