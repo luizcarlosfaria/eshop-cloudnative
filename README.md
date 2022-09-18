@@ -120,7 +120,7 @@ O minio é nosso Object Storage, ele, assim como o cluster RabbitMQ e o cluster 
 
 # Entendendo os serviços
 
-<img src="https://github.com/luizcarlosfaria/eshop-cloudnative/raw/main/docs/assets/diagrama.png" alt="eShop logo" title="eShopOnContainers"  />
+<img src="https://raw.githubusercontent.com/luizcarlosfaria/eshop-cloudnative/main/docs/assets/DiagramaVisio02.png" alt="eShop logo" title="eShopOnContainers"  />
 
 
 # Projeto final Cloud Native .NET
