@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   eshopcloudnative.catalog.webui:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     container_name: catalog_webui
     image: ${DOCKER_REGISTRY-}eshop-catalog-web
     build:
@@ -16,7 +16,7 @@ services:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
   eshopcloudnative.catalog.primaryadapters:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     container_name: catalog_primaryadapters
     image: ${DOCKER_REGISTRY-}eshop-catalog-primaryadapters
     build:
@@ -36,7 +36,7 @@ services:
         condition: service_started
 
   api:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     container_name: kong
     image: kong:2.8.1-alpine
     volumes:
@@ -61,7 +61,7 @@ services:
         condition: service_started #service_completed_successfully (visual studio não suporta)
 
   redis:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     image: redis:7.0.4
     container_name: redis-front
     networks:
@@ -69,7 +69,7 @@ services:
       - eshop-back
 
   postgres:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     image: postgres:14.4
     container_name: postgres
     ports:
@@ -113,7 +113,7 @@ services:
   #       condition: service_healthy
 
   rabbitmq:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     container_name: rabbitmq
     hostname: rabbitmq
     build:
@@ -139,7 +139,7 @@ services:
       - log
 
   minio:
-    profiles: ["app", "log"]
+    profiles: [ "app", "log" ]
     container_name: minio
     image: quay.io/minio/minio
     ports:
@@ -162,92 +162,71 @@ services:
       - eshop-back
 
   logstash:
-    profiles: ["log"]
+    profiles: [ "log" ]
     container_name: log_logstash
     hostname: logstash
-    image: grafana/logstash-output-loki:2.6.1-amd64
+    image: opensearchproject/logstash-oss-with-opensearch-output-plugin
     environment: { "TZ": "America/Sao_Paulo" }
     volumes:
-      - ./infra/eal/logstash/logstash.conf:/home/logstash/logstash.conf
-      - ./infra/eal/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./infra/eal/logstash/logstash.conf:/usr/share/logstash/logstash.conf
     command: -f logstash.conf
     depends_on:
       rabbitmq:
         condition: service_healthy
-      loki:
+      opensearch:
         condition: service_healthy
     networks:
       - log
 
-  loki:
-    profiles: ["log"]
-    container_name: log_loki
-    image: grafana/loki:2.6.0
-    environment: { "TZ": "America/Sao_Paulo" }
-    ports:
-      - "3100:3100"
-    volumes:
-      - ./infra/eal/loki/:/mnt/config
-    healthcheck:
-      test: wget -q --tries=1 -O- http://127.0.0.1:3100/ready | grep -q "ready"
-      interval: 30s
-      timeout: 5s
-      retries: 5
-    command: -config.file=/mnt/config/loki-config.yaml
-    networks:
-      - log
-
-  promtail:
-    profiles: ["log"]
-    container_name: log_promtail
-    image: grafana/promtail:2.6.0
-    environment: { "TZ": "America/Sao_Paulo" }
-    volumes:
-      - ./infra/eal/promtail/:/mnt/config
-    command: -config.file=/mnt/config/promtail-config.yaml
-    networks:
-      - log
-    depends_on:
-      loki:
-        condition: service_healthy
-
-  grafana:
-    profiles: ["log"]
-    container_name: log_grafana
-    image: grafana/grafana:latest
+  opensearch:
+    profiles: [ "log" ]
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch
     environment:
-      {
-        "TZ": "America/Sao_Paulo",
-        "GF_PATHS_PROVISIONING": "/etc/grafana/provisioning",
-        "GF_AUTH_ANONYMOUS_ENABLED": "true",
-        "GF_AUTH_ANONYMOUS_ORG_ROLE": "Admin"
-      }
-    entrypoint:
-      - sh
-      - -euc
-      - |
-        mkdir -p /etc/grafana/provisioning/datasources
-        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
-        apiVersion: 1
-        datasources:
-          - name: Loki
-            type: loki
-            access: proxy
-            url: http://loki:3100
-            jsonData:
-              httpHeaderName1: "X-Scope-OrgID"
-            secureJsonData:
-              httpHeaderValue1: "tenant1"
-        EOF
-        /run.sh    
-    # volumes:
-    #   - ./infra/eal/grafana/:/var/lib/grafana
+      - cluster.name=opensearch-cluster
+      - node.name=opensearch
+      - discovery.seed_hosts=opensearch
+      - cluster.initial_cluster_manager_nodes=opensearch
+      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -I -s -k https://localhost:9200 || exit 1"
+        ]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
+        hard: 65536
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
     ports:
-      - "3000:3000"
+      - 9200:9200
+      - 9600:9600 # required for Performance Analyzer
+    networks:
+      - log
+
+  opensearch-dashboards:
+    profiles: [ "log" ]
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
     networks:
       - log
     depends_on:
-      loki:
+      opensearch:
         condition: service_healthy
 
 networks:
@@ -262,5 +241,6 @@ volumes:
   rabbitmq_data:
   pgadmin_data:
   minio_data:
+  opensearch_data:
 
 
