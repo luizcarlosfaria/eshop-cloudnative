@@ -16,10 +16,17 @@ Esse projeto foi pensado em endereçar problemas reais de um cenário crítico d
 ```
 git clone https://github.com/luizcarlosfaria/eshop-cloudnative.git --recursive
 cd ./eshop-cloudnative
-docker compose up --build
+
+Opção 1: Somente Aplicação
+docker compose --profile app up --build
+
+Opção 2: Aplicação + Log
+docker compose --profile app --profile log up --build
+
 
 Acesse http://localhost:90/ no seu navegador
 ```
+
 ## 100% Cloud Agnostic
 
 Nenhuma dependência de NENHUM CLOUD PROVIDER! 
