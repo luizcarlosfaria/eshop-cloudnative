@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.PrimaryAdapters", "catalog\eShopCloudNative.Catalog.PrimaryAdapters\eShopCloudNative.Catalog.PrimaryAdapters.csproj", "{50245E08-582A-4FB5-BBC8-712C05C842B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopCloudNative.Architecture.SourceGen", "architecture\eShopCloudNative.Architecture.SourceGen\eShopCloudNative.Architecture.SourceGen.csproj", "{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +129,7 @@ Global
 		{CA6C0391-969F-441A-BA30-236A6000066E} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{38FC82CC-EFD3-4457-AC30-E8E426906DA7} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 		{50245E08-582A-4FB5-BBC8-712C05C842B6} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
+		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}
