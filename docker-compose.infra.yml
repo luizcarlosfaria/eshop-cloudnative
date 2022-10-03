@@ -1,0 +1,190 @@
+version: '3.4'
+
+services:
+
+  api:
+    profiles: [ "minimal", "log" ]
+    container_name: kong
+    image: kong:2.8.1-alpine
+    volumes:
+      - ./infra/api/kong.yml:/kong.yml
+    environment:
+      - LC_CTYPE=en_US.UTF-8
+      - LC_ALL=en_US.UTF-8
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/kong.yml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+    ports:
+    - 8000:8000
+    #mem_limit: 300m
+    networks:
+    - eshop
+
+  redis:
+    profiles: [ "minimal", "log" ]
+    image: redis:7.0.4
+    container_name: redis-front
+    ports:
+    - 6379:6379
+    networks:
+    - eshop
+
+  postgres:
+    profiles: [ "minimal", "log" ]
+    image: postgres:14.4
+    container_name: postgres
+    ports:
+    - "5432:5432"
+    environment:
+      {
+        "POSTGRES_DB": "eshop_db",
+        "POSTGRES_USER": "eshop_user",
+        "POSTGRES_PASSWORD": "eshop_pass"
+      }
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "--dbname=eshop_db",
+          "--username=eshop_user"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+    - eshop
+
+  rabbitmq:
+    profiles: [ "minimal", "log" ]
+    container_name: rabbitmq
+    hostname: rabbitmq
+    build:
+      context: ./infra/rabbitmq
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/mnesia
+    ports:
+      - "15672:15672" #management # habilitado visualiza��o no browser
+      #- "15692:15692" #prometheus # desnecess�rio
+      - "5672:5672" #amqp
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -I -s -L http://localhost:15672 || exit 1"
+        ]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+    networks:
+      - eshop
+      - log
+
+  minio:
+    profiles: [ "minimal", "log" ]
+    container_name: minio
+    image: quay.io/minio/minio
+    ports:
+      - 9000:9000
+      - 9001:9001
+    command:
+      [
+        "server",
+        "/data",
+        "--console-address",
+        ":9001",
+        "--address",
+        ":9000"
+      ]
+    environment: { "MINIO_DOMAIN": "minio,localhost" }
+    volumes:
+      - minio_data:/data
+    networks:
+      - eshop
+
+  logstash:
+    profiles: [ "log" ]
+    container_name: log_logstash
+    hostname: logstash
+    image: opensearchproject/logstash-oss-with-opensearch-output-plugin
+    environment: { "TZ": "America/Sao_Paulo" }
+    volumes:
+      - ./infra/eal/logstash/logstash.conf:/usr/share/logstash/logstash.conf
+    command: -f logstash.conf
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      opensearch:
+        condition: service_healthy
+    networks:
+      - log
+
+  opensearch:
+    profiles: [ "log" ]
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch
+    environment:
+      - cluster.name=opensearch-cluster
+      - node.name=opensearch
+      - discovery.seed_hosts=opensearch
+      - cluster.initial_cluster_manager_nodes=opensearch
+      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -I -s -k https://localhost:9200 || exit 1"
+        ]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
+        hard: 65536
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    ports:
+      - 9200:9200
+      - 9600:9600 # required for Performance Analyzer
+    networks:
+      - log
+
+  opensearch-dashboards:
+    profiles: [ "log" ]
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
+    networks:
+      - log
+    depends_on:
+      opensearch:
+        condition: service_healthy
+
+networks:
+  eshop:
+    driver: bridge
+    name: eshop
+  log:
+    driver: bridge
+    name: log
+
+volumes:
+  rabbitmq_data:
+  pgadmin_data:
+  minio_data:
+  opensearch_data:
+
+

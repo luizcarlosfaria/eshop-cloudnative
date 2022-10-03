@@ -18,12 +18,21 @@ git clone https://github.com/luizcarlosfaria/eshop-cloudnative.git --recursive
 cd ./eshop-cloudnative
 ```
 
-### Opção 1 - Somente Aplicação
+### Subindo Serviços de Infra
+
+### Opção 1 - Serviços mínimos
 ```
-docker compose --profile app up --build
+./_run-infra-light.sh
+
 ```
 
-### Opção 2 - Aplicação + Enterprise Application Log
+Nesta opção os seguintes serviços **não** são criados:
+
+* OpenSearch (Similar ao ElasticSearch)
+* OpenSearch Dashboard  (Similar ao Kibana)
+* LogStash
+
+### Opção 2 - Serviços mínimos + Enterprise Application Log
 
 no WSL 2 execute
 
@@ -32,8 +41,12 @@ sysctl -w vm.max_map_count=262144
 ```
 
 ```
-docker compose --profile app --profile log up --build
+./_run-infra-full.sh
 ```
+
+Agora basta abrir o visual studio e rodar a aplicação pelo docker compose.
+
+Ou executar `docker compose up --build`
 
 Agora basta acessar http://localhost:90/ no seu navegador.
 

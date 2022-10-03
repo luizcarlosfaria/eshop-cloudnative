@@ -3,10 +3,10 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
-      "composeProfile": {
-        "includes": [
-          "app"
-        ]
+      "serviceActions": {
+        "eshopcloudnative.catalog.bootstrap": "StartDebugging",
+        "eshopcloudnative.catalog.primaryadapters": "StartDebugging",
+        "eshopcloudnative.catalog.webui": "StartDebugging"
       }
     }
   }

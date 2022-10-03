@@ -1,241 +1,86 @@
 version: '3.4'
 
 services:
+
+  ###################################################################################
   eshopcloudnative.catalog.webui:
-    profiles: [ "app", "log" ]
     container_name: catalog_webui
     image: ${DOCKER_REGISTRY-}eshop-catalog-web
     build:
       context: ./catalog
       dockerfile: eShopCloudNative.Catalog.WebUI/Dockerfile
     networks:
-      - eshop-front
+      - eshop
     mem_limit: 150m
     depends_on:
-      api:
-        condition: service_started #service_completed_successfully (visual studio não suporta)
+      eshopcloudnative.catalog.bootstrap:
+        condition: service_healthy
+      eshopcloudnative.catalog.primaryadapters:
+        condition: service_started
+    #  api:
+    #    condition: service_started #service_completed_successfully (visual studio não suporta)
 
+  ###################################################################################
+  eshopcloudnative.catalog.bootstrap:
+    container_name: catalog_bootstrap
+    image: ${DOCKER_REGISTRY-}eshop-catalog-bootstrap
+    build:
+      context: ./catalog
+      dockerfile: eShopCloudNative.Catalog.Bootstrap/Dockerfile
+    healthcheck:
+      test: [ "CMD-SHELL", "cat", "/bootstrap.ok" ]
+      interval: 5s
+      timeout: 15s
+      retries: 10
+      start_period: 5s    
+    networks:
+      - eshop
+    mem_limit: 200m
+
+
+  ###################################################################################
   eshopcloudnative.catalog.primaryadapters:
-    profiles: [ "app", "log" ]
-    container_name: catalog_primaryadapters
+    container_name: catalog_host
     image: ${DOCKER_REGISTRY-}eshop-catalog-primaryadapters
     build:
       context: ./catalog
       dockerfile: eShopCloudNative.Catalog.PrimaryAdapters/Dockerfile
-    networks:
-      - eshop-back
-    mem_limit: 200m
-    depends_on:
-      postgres:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-      redis:
-        condition: service_started
-      minio:
-        condition: service_started
-
-  api:
-    profiles: [ "app", "log" ]
-    container_name: kong
-    image: kong:2.8.1-alpine
-    volumes:
-      - ./infra/api/kong.yml:/kong.yml
-    environment:
-      - LC_CTYPE=en_US.UTF-8
-      - LC_ALL=en_US.UTF-8
-      - KONG_DATABASE=off
-      - KONG_DECLARATIVE_CONFIG=/kong.yml
-      - KONG_PROXY_ACCESS_LOG=/dev/stdout
-      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
-      - KONG_PROXY_ERROR_LOG=/dev/stderr
-      - KONG_ADMIN_ERROR_LOG=/dev/stderr
-    ports:
-      - 8000:8000
-    #mem_limit: 300m
-    networks:
-      - eshop-front
-      - eshop-back
-    depends_on:
-      eshopcloudnative.catalog.primaryadapters:
-        condition: service_started #service_completed_successfully (visual studio não suporta)
-
-  redis:
-    profiles: [ "app", "log" ]
-    image: redis:7.0.4
-    container_name: redis-front
-    networks:
-      - eshop-front
-      - eshop-back
-
-  postgres:
-    profiles: [ "app", "log" ]
-    image: postgres:14.4
-    container_name: postgres
-    ports:
-      - "5432:5432"
     environment:
       {
-        "POSTGRES_DB": "eshop_db",
-        "POSTGRES_USER": "eshop_user",
-        "POSTGRES_PASSWORD": "eshop_pass"
+        "boostrap__minio": false,
+        "boostrap__postgres": false,
+        "boostrap__sample-data": false,
+        "boostrap__rabbitmq": false,
+        "boostrap__healthcheck": false,
+        "boostrap__web-api": true
       }
     healthcheck:
-      test:
-        [
-          "CMD",
-          "pg_isready",
-          "--dbname=eshop_db",
-          "--username=eshop_user"
-        ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      test: [ "CMD", "curl", "-f", "http://localhost:80/ping" ]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
     networks:
-      - eshop-back
-
-  # pgadmin4:
-  #   image: dpage/pgadmin4:6.12
-  #   container_name: pgadmin
-  #   hostname: pgadmin
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: admin@admin.admin
-  #     PGADMIN_DEFAULT_PASSWORD: admin
-  #   volumes:
-  #     - "pgadmin_data:/var/lib/pgadmin/"
-  #     - "./infra/pgadmin/servers.json:/pgadmin4/servers.json"
-  #   ports:
-  #     - "82:80"
-  #   networks:
-  #     - eshop-back
-  #   depends_on:
-  #     postgres:
-  #       condition: service_healthy
-
-  rabbitmq:
-    profiles: [ "app", "log" ]
-    container_name: rabbitmq
-    hostname: rabbitmq
-    build:
-      context: ./infra/rabbitmq
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq/mnesia
-    ports:
-      - "15672:15672" #management # habilitado visualização no browser
-      #- "15692:15692" #prometheus # desnecessário
-      - "5672:5672" #amqp
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "curl -I -s -L http://localhost:15672 || exit 1"
-        ]
-      interval: 30s
-      timeout: 20s
-      retries: 5
-    networks:
-      - eshop-front
-      - eshop-back
-      - log
-
-  minio:
-    profiles: [ "app", "log" ]
-    container_name: minio
-    image: quay.io/minio/minio
-    ports:
-      - 9000:9000
-      - 9001:9001
-    command:
-      [
-        "server",
-        "/data",
-        "--console-address",
-        ":9001",
-        "--address",
-        ":9000"
-      ]
-    environment: { "MINIO_DOMAIN": "minio,localhost" }
-    volumes:
-      - minio_data:/data
-    networks:
-      - eshop-front
-      - eshop-back
-
-  logstash:
-    profiles: [ "log" ]
-    container_name: log_logstash
-    hostname: logstash
-    image: opensearchproject/logstash-oss-with-opensearch-output-plugin
-    environment: { "TZ": "America/Sao_Paulo" }
-    volumes:
-      - ./infra/eal/logstash/logstash.conf:/usr/share/logstash/logstash.conf
-    command: -f logstash.conf
+      - eshop
+    mem_limit: 200m
     depends_on:
-      rabbitmq:
+      eshopcloudnative.catalog.bootstrap:
         condition: service_healthy
-      opensearch:
-        condition: service_healthy
-    networks:
-      - log
-
-  opensearch:
-    profiles: [ "log" ]
-    image: opensearchproject/opensearch:latest
-    container_name: opensearch
-    environment:
-      - cluster.name=opensearch-cluster
-      - node.name=opensearch
-      - discovery.seed_hosts=opensearch
-      - cluster.initial_cluster_manager_nodes=opensearch
-      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
-      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "curl -I -s -k https://localhost:9200 || exit 1"
-        ]
-      interval: 30s
-      timeout: 20s
-      retries: 5
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
-        hard: 65536
-    volumes:
-      - opensearch_data:/usr/share/opensearch/data
-    ports:
-      - 9200:9200
-      - 9600:9600 # required for Performance Analyzer
-    networks:
-      - log
-
-  opensearch-dashboards:
-    profiles: [ "log" ]
-    image: opensearchproject/opensearch-dashboards:latest
-    container_name: opensearch-dashboards
-    ports:
-      - 5601:5601
-    expose:
-      - "5601"
-    environment:
-      OPENSEARCH_HOSTS: '["https://opensearch:9200"]'
-    networks:
-      - log
-    depends_on:
-      opensearch:
-        condition: service_healthy
+      #depends_on:
+      #  postgres:
+      #    condition: service_healthy
+      #  rabbitmq:
+      #    condition: service_healthy
+      #  redis:
+      #    condition: service_started
+      #  minio:
+      #    condition: service_started
 
 networks:
-  eshop-front:
-    driver: bridge
-  eshop-back:
-    driver: bridge
+  eshop:
+    external: true
   log:
-    driver: bridge
+    external: true
 
 volumes:
   rabbitmq_data:
