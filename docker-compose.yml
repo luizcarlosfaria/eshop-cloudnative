@@ -15,7 +15,7 @@ services:
     depends_on:
       eshopcloudnative.catalog.bootstrap:
         condition: service_healthy
-      eshopcloudnative.catalog.primaryadapters:
+      eshopcloudnative.catalog.servicehost:
         condition: service_started
     #  api:
     #    condition: service_started #service_completed_successfully (visual studio não suporta)
@@ -39,12 +39,12 @@ services:
 
 
   ###################################################################################
-  eshopcloudnative.catalog.primaryadapters:
+  eshopcloudnative.catalog.servicehost:
     container_name: catalog_host
-    image: ${DOCKER_REGISTRY-}eshop-catalog-primaryadapters
+    image: ${DOCKER_REGISTRY-}eshop-catalog-servicehost
     build:
       context: ./catalog
-      dockerfile: eShopCloudNative.Catalog.PrimaryAdapters/Dockerfile
+      dockerfile: eShopCloudNative.Catalog.ServiceHost/Dockerfile
     environment:
       {
         "boostrap__minio": false,

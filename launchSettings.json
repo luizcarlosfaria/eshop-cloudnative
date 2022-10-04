@@ -5,7 +5,7 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "eshopcloudnative.catalog.bootstrap": "StartDebugging",
-        "eshopcloudnative.catalog.primaryadapters": "StartDebugging",
+        "eshopcloudnative.catalog.servicehost": "StartDebugging",
         "eshopcloudnative.catalog.webui": "StartDebugging"
       }
     }

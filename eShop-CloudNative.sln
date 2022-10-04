@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B791BEAD-D87C-4D55-BF8B-B7F504E260A1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstractions", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{6525EA68-80F3-4D33-8C4F-319893C32BFE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Architecture", "catalog\eShopCloudNative.Catalog.Architecture\eShopCloudNative.Catalog.Architecture.csproj", "{FE206DE3-DA83-4270-AEC2-8B0D085EAE45}"
 EndProject
@@ -41,15 +41,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architectu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA6C0391-969F-441A-BA30-236A6000066E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.SecondaryAdapters", "catalog\eShopCloudNative.Catalog.SecondaryAdapters\eShopCloudNative.Catalog.SecondaryAdapters.csproj", "{38FC82CC-EFD3-4457-AC30-E8E426906DA7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.PrimaryAdapters", "catalog\eShopCloudNative.Catalog.PrimaryAdapters\eShopCloudNative.Catalog.PrimaryAdapters.csproj", "{50245E08-582A-4FB5-BBC8-712C05C842B6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Architecture.SourceGen", "architecture\eShopCloudNative.Architecture.SourceGen\eShopCloudNative.Architecture.SourceGen.csproj", "{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Bootstrap", "catalog\eShopCloudNative.Catalog.Bootstrap\eShopCloudNative.Catalog.Bootstrap.csproj", "{87E9CBB3-542E-4818-9B68-08964A477DF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{7C1990EC-290F-422C-BCCB-DE6896B9BF92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.ServiceHost", "catalog\eShopCloudNative.Catalog.ServiceHost\eShopCloudNative.Catalog.ServiceHost.csproj", "{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Adapters", "catalog\eShopCloudNative.Catalog.Adapters\eShopCloudNative.Catalog.Adapters.csproj", "{3F805D5D-7827-4665-9977-8A94776E52CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,14 +101,6 @@ Global
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38FC82CC-EFD3-4457-AC30-E8E426906DA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50245E08-582A-4FB5-BBC8-712C05C842B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -117,6 +109,14 @@ Global
 		{87E9CBB3-542E-4818-9B68-08964A477DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87E9CBB3-542E-4818-9B68-08964A477DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87E9CBB3-542E-4818-9B68-08964A477DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F805D5D-7827-4665-9977-8A94776E52CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F805D5D-7827-4665-9977-8A94776E52CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F805D5D-7827-4665-9977-8A94776E52CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F805D5D-7827-4665-9977-8A94776E52CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,11 +135,11 @@ Global
 		{099F99C9-A28B-4977-9ECC-7B711D5C0E8C} = {CA6C0391-969F-441A-BA30-236A6000066E}
 		{A1E6D8FE-9596-4286-90B6-52B0DB7F610B} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{CA6C0391-969F-441A-BA30-236A6000066E} = {43B55757-A313-4F77-AD29-B9086CAC8330}
-		{38FC82CC-EFD3-4457-AC30-E8E426906DA7} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
-		{50245E08-582A-4FB5-BBC8-712C05C842B6} = {7C1990EC-290F-422C-BCCB-DE6896B9BF92}
 		{4AED3C65-98C5-48E1-AFBA-EA86558ED61F} = {43B55757-A313-4F77-AD29-B9086CAC8330}
 		{87E9CBB3-542E-4818-9B68-08964A477DF7} = {7C1990EC-290F-422C-BCCB-DE6896B9BF92}
 		{7C1990EC-290F-422C-BCCB-DE6896B9BF92} = {47103EE0-8D83-4EC3-8292-5B78C829CE21}
+		{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE} = {7C1990EC-290F-422C-BCCB-DE6896B9BF92}
+		{3F805D5D-7827-4665-9977-8A94776E52CB} = {6525EA68-80F3-4D33-8C4F-319893C32BFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0D5075-85C7-406F-A873-6D39726D0EC7}
