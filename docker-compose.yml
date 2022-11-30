@@ -3,6 +3,25 @@ version: '3.4'
 name: eshop
 
 services:
+  ###################################################################################
+  identity_mock:
+    container_name: identity_mock
+    build:
+      context: ./infra/idp/build
+      dockerfile: Dockerfile
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -I -s -k http://localhost:80 || exit 1"
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 3      
+    networks:
+     eshop:
+        aliases:
+          - localhost1.gago.io
 
   ###################################################################################
   eshopcloudnative.catalog.webui:
@@ -18,6 +37,8 @@ services:
         condition: service_healthy
       eshopcloudnative.catalog.servicehost:
         condition: service_started
+      identity_mock:
+        condition: service_healthy
     #  api:
     #    condition: service_started #service_completed_successfully (visual studio não suporta)
 
