@@ -5,7 +5,8 @@ services:
   api:
     profiles: [ "minimal", "log" ]
     container_name: kong
-    image: kong:3.0.0-alpine
+    build:
+      context: ./infra/api
     volumes:
       - ./infra/api/kong.yml:/kong.yml
     environment:
