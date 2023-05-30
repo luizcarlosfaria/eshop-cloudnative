@@ -51,6 +51,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Adapters", "catalog\eShopCloudNative.Catalog.Adapters\eShopCloudNative.Catalog.Adapters.csproj", "{3F805D5D-7827-4665-9977-8A94776E52CB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5FA65B0-7EFC-486E-9BDB-7BFDBD3D718D}"
+	ProjectSection(SolutionItems) = preProject
+		architecture\eShopCloudNative.Architecture.targets = architecture\eShopCloudNative.Architecture.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
