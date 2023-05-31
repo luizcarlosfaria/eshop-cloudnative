@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.WebUI", "catalog\eShopCloudNative.Catalog.WebUI\eShopCloudNative.Catalog.WebUI.csproj", "{4B362F25-7209-4D12-B36E-7342A652D38B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{47103EE0-8D83-4EC3-8292-5B78C829CE21}"
+	ProjectSection(SolutionItems) = preProject
+		catalog\eShopCloudNative.Catalog.targets = catalog\eShopCloudNative.Catalog.targets
+	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9D285E4F-D05A-4893-A3EB-56E064C98C31}"
 EndProject
@@ -50,11 +53,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.ServiceHost", "catalog\eShopCloudNative.Catalog.ServiceHost\eShopCloudNative.Catalog.ServiceHost.csproj", "{FAE4F4F9-8EAE-4FC8-9F39-CEBA5630D2EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Adapters", "catalog\eShopCloudNative.Catalog.Adapters\eShopCloudNative.Catalog.Adapters.csproj", "{3F805D5D-7827-4665-9977-8A94776E52CB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5FA65B0-7EFC-486E-9BDB-7BFDBD3D718D}"
-	ProjectSection(SolutionItems) = preProject
-		architecture\eShopCloudNative.Architecture.targets = architecture\eShopCloudNative.Architecture.targets
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
