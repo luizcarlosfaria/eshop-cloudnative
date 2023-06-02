@@ -24,6 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopCloudNative.Catalog.Ar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "architecture", "architecture", "{43B55757-A313-4F77-AD29-B9086CAC8330}"
 	ProjectSection(SolutionItems) = preProject
+		architecture\Dockerfile = architecture\Dockerfile
 		architecture\eShopCloudNative.Architecture.targets = architecture\eShopCloudNative.Architecture.targets
 		architecture\Jenkinsfile = architecture\Jenkinsfile
 	EndProjectSection
